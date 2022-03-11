@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z1</title>
+</head>
+<body>
+  <style>
+    .outer:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+    
+    .inner {
+      display: inline-block;
+      
+      vertical-align: middle;
+    }
+    
+    .outer {
+      text-align: center;
+      width: 100px;
+      height: 100px;
+    }
+
+    .flex-container {
+      display: flex;
+    }
+  </style>
+  <div class="flex-container">
+
+    <div class="outer">
+      <span class="inner">
+        1
+      </span>
+    </div>
+
+    <div class="outer">
+      <span class="inner" >
+        2
+      </span>
+    </div>
+
+    <div class="outer">
+      <span class="inner">
+        3
+      </span>
+    </div>
+  </div>
+</body>
+</html>
