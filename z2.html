@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z1</title>
+</head>
+<body>
+  <style>
+    .outer:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+    
+    .inner {
+      display: inline-block;
+      
+      vertical-align: middle;
+    }
+    
+    .outer {
+      text-align: center;
+      width: 100px;
+      height: 100px;
+    }
+
+    .black{
+      background-color: black;
+      color: white;
+    }
+
+    .gray{
+      background-color: rgb(192, 192, 192);
+      color: black;
+    }
+
+    .red{
+      background-color: red;
+      color: white;
+    }
+
+    .flex-container {
+      display: flex;
+    }
+  </style>
+  <div class="flex-container">
+
+    <div class="outer red">
+      <span class="inner">
+        1
+      </span>
+    </div>
+
+    <div class="outer black">
+      <span class="inner" >
+        2
+      </span>
+    </div>
+
+    <div class="outer black">
+      <span class="inner">
+        3
+      </span>
+    </div>
+
+    <div class="outer black">
+      <span class="inner">
+        4
+      </span>
+    </div>
+
+    <div class="outer">
+      <span class="inner">
+        5
+      </span>
+    </div>
+    
+  </div>
+
+  <input type="checkbox" id = "_checkbox" onclick="SetColor()" />
+
+  <script>
+    function SetColor(){
+      var _checkbox = document.getElementById('_checkbox');
+      
+      var els = document.getElementsByClassName('black');
+      console.log(els);
+      for (var i = 0; i < 4; i++) {
+        if (_checkbox.checked){
+        els[i].style.backgroundColor = 'gray';
+        els[i].style.color = 'black';
+        }else{
+          els[i].style.backgroundColor = 'black';
+          els[i].style.color = 'white';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
