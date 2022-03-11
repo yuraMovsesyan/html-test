@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z5</title>
+</head>
+<body>
+  <style>
+    .outer:before {
+      content: '';
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+    
+    .inner {
+      display: inline-block;
+      
+      vertical-align: middle;
+    }
+    
+    .outer {
+      text-align: center;
+      width: 100px;
+      height: 100px;
+    }
+
+    .black{
+      background-color: black;
+      color: white;
+    }
+
+    .gray{
+      background-color: rgb(192, 192, 192);
+      color: black;
+    }
+
+    .red{
+      background-color: red;
+      color: white;
+    }
+
+    .flex-container {
+      display: flex;
+    }
+
+    #pop{
+      background-color: blueviolet;
+      position: fixed;
+
+      padding: 10px;
+
+      visibility: hidden;
+    }
+  </style>
+  <div class="flex-container">
+
+    
+    
+  </div>
+
+  <div id="pop">
+    <span id="popText">Text</span>
+    <button onclick="Close()">Close</button>
+  </div>
+  <br />
+  <input type="checkbox" id = "_checkbox"/> isBlack
+  <br />
+  <button onclick="Add()">add</button>
+  <script>
+    function getCoords(elem) {
+      let box = elem.getBoundingClientRect();
+
+      return {
+        top: box.top + window.pageYOffset,
+        right: box.right + window.pageXOffset,
+        bottom: box.bottom + window.pageYOffset,
+        left: box.left + window.pageXOffset
+      };
+    }
+    function Click(e){
+      setTimeout(() => {
+        var popStyle = document.getElementById("pop").style;
+        popStyle.visibility = "visible";
+        popStyle.left = getCoords(e).left + 'px';
+        popStyle.top = getCoords(e).top + e.offsetHeight + 'px';
+
+        document.getElementById("popText").textContent = e.getElementsByClassName('inner')[0].textContent;
+      }, 500);
+    }
+    function Close(e){
+      document.getElementById("pop").style.visibility = "hidden";
+    }
+
+    var i = 0;
+
+    var _checkbox = document.getElementById('_checkbox');
+    function Add() {
+        const $newDiv = document.createElement('div');
+        $newDiv.className = "outer";
+        if (_checkbox.checked)
+            $newDiv.className += " black";
+        $newDiv.setAttribute("onclick","Click(this)");
+        const $flex = document.querySelector('.flex-container');
+        $flex.appendChild($newDiv);
+
+        const $newSpan = document.createElement('span');
+        $newSpan.textContent = i;
+        $newSpan.className = "inner";
+        $newDiv.appendChild($newSpan);
+        i++;
+    }
+  </script>
+</body>
+</html>
